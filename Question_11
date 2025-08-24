@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+private:
+    string firstName;
+    string lastName;
+    double monthlySalary;
+
+public:
+    Employee(string f, string l, double sal) {
+        firstName = f;
+        lastName = l;
+        if (sal < 0)
+            monthlySalary = 0;
+        else
+            monthlySalary = sal;
+    }
+    
+    void setSalary(double sal) {
+        if (sal < 0)
+            monthlySalary = 0;
+        else
+            monthlySalary = sal;
+    }
+
+    void display() {
+        cout << "Employee: " << firstName << " " << lastName << endl;
+        cout << "Monthly Salary: " << monthlySalary << endl;
+        cout << "Yearly Salary: " << monthlySalary * 12 << endl << endl;
+    }
+
+  
+    void giveRaise() {
+        monthlySalary = monthlySalary * 1.10;
+    }
+};
+
+int main() 
+{
+    Employee e1("Apurva", "Burhade", 25000);
+    Employee e2("Jyoti", "Ghate", 30000);
+
+    cout << "Before Raise:" << endl;
+    e1.display();
+    e2.display();
+
+    e1.giveRaise();
+    e2.giveRaise();
+
+    cout << "After 10% Raise:" << endl;
+    e1.display();
+    e2.display();
+
+    return 0;
+}
